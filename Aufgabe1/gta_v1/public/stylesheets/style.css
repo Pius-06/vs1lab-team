@@ -124,7 +124,50 @@ a {
 
 /* ### TODO ### Styles for Discovery component Pius*/
 
-/* ... your code here ... */
+.discovery__search fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  width: 100%;
+}
+
+.discovery__search input,
+.discovery__search button {
+  width: 200px;
+  align-self: flex-start; /* Links ausrichten */
+}
+
+.discovery__search label,
+.discovery__search input {
+  color: rgb(94, 94, 94);
+}
+
+.discovery__search legend {
+  font-weight: bold;
+}
+
+.discovery__search input {
+  padding: 10px;
+  border: 1px solid rgb(168, 168, 168);
+}
+
+.discovery__search button {
+  background-color: #EFEFEF;
+  color: rgb(168, 168, 168);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.discovery__search button:hover {
+  background-color: #dcdcdc;
+  color: #333;
+  transition: 0.2s;
+}
+
+
 
 
 /* ### TODO ### Styles for Footer Component Marlon*/
