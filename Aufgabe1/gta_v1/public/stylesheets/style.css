@@ -177,4 +177,8 @@ a {
 
 /* ### TODO ### Media Queries Pius*/
 
-/* ... your code here ... */
+@media (max-width: 850px) {
+  .row {
+    grid-template-columns: 1fr; /* nur eine Spalte */
+  }
+}
