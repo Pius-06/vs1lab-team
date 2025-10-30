@@ -114,17 +114,25 @@ a {
 
 /* ### TODO ### Styles for Main Component Radek*/
 
-/* ... your code here ... */
+.main {
+  display: flex;
+  justify-content: space-between; /* Abstand zwischen den beiden Bereichen */
+  align-items: flex-start; /* richtet sie oben aus */
+  gap: 20px; /* optionaler Abstand */
+  padding: 20px;
+}
+
+.main__tagging,
+.main__discovery {
+  flex: 1; /* teilt Platz gleichmäßig */
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
 
 
 /* ### TODO ### Styles for Tagging component Radek */
-
-/* main container */
-.tagging {
-  padding: 20px;
-  /* background-color: var(--background-color); */
-  /* geht nicht */
-}
 
 .tagging h2 {
   margin-bottom: 10px;
