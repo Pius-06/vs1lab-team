@@ -119,19 +119,74 @@ a {
 
 /* ### TODO ### Styles for Tagging component Radek */
 
-/* ... your code here ... */
+/* main container */
+.tagging {
+  padding: 20px;
+  /* background-color: var(--background-color); */
+  /* geht nicht */
+  border: 1px solid var(--border-color);
+}
 
+.tagging h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
 
-/* ### TODO ### Styles for Discovery component Pius*/
-
-.discovery__search fieldset {
+/* Fieldset */
+fieldset {
   display: flex;
   flex-direction: column;
   gap: 15px;
   border: 1px solid var(--border-color);
+
   padding: 15px;
-  width: 100%;
 }
+
+/* labels */
+label {
+  color: var(--gray-color);
+  margin-bottom: 0;
+  font-size: 16px
+}
+
+/* inputs */
+input {
+  width: 100%;
+  padding: 4px 6px;
+  border: 0.5px solid var(--border-color);
+  color: black;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+/* placeholder style for readonly */
+#tag-form input[readonly] {
+  background-color: var(--background-color);
+}
+
+/* placeholder style  */
+#tag-form input::placeholder {
+  color: var(--gray-color);
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+@media (max-width=850px) {
+  #tag-form fieldset {
+    max-width: 100%;
+  }
+}
+
+/* ### TODO ### Styles for Discovery component Pius*/
+
 
 .discovery__search input,
 .discovery__search button {
@@ -140,32 +195,8 @@ a {
   /* Links ausrichten */
 }
 
-.discovery__search label,
-.discovery__search input {
-  color: rgb(94, 94, 94);
-}
-
-.discovery__search legend {
-  font-weight: bold;
-}
-
-.discovery__search input {
-  padding: 10px;
-  border: 1px solid rgb(168, 168, 168);
-}
-
 .discovery__search button {
-  background-color: #EFEFEF;
   color: rgb(168, 168, 168);
-  border: 1px solid var(--border-color);
-  padding: 10px;
-  cursor: pointer;
-}
-
-.discovery__search button:hover {
-  background-color: #dcdcdc;
-  color: #333;
-  transition: 0.2s;
 }
 
 
