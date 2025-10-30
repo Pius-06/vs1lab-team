@@ -120,13 +120,8 @@ a {
 /* ### TODO ### Styles for Tagging component Radek */
 
 /* main container */
-.tagging {
-  padding: 20px;
-  /* background-color: var(--background-color); */
-  /* geht nicht */
-}
 
-.tagging h2 {
+h2 {
   margin-bottom: 10px;
   font-size: 24px;
 }
@@ -150,7 +145,7 @@ label {
 /* inputs */
 input {
   width: 100%;
-  padding: 4px 6px;
+  padding: 12px 6px;
   border: 0.5px solid var(--border-color);
   color: black;
   font-size: 16px;
