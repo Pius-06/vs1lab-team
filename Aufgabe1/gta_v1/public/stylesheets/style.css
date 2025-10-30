@@ -124,7 +124,6 @@ a {
   padding: 20px;
   /* background-color: var(--background-color); */
   /* geht nicht */
-  border: 1px solid var(--border-color);
 }
 
 .tagging h2 {
@@ -138,7 +137,6 @@ fieldset {
   flex-direction: column;
   gap: 15px;
   border: 1px solid var(--border-color);
-
   padding: 15px;
 }
 
