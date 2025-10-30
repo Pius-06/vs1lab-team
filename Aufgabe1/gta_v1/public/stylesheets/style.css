@@ -136,7 +136,8 @@ a {
 .discovery__search input,
 .discovery__search button {
   width: 200px;
-  align-self: flex-start; /* Links ausrichten */
+  align-self: flex-start;
+  /* Links ausrichten */
 }
 
 .discovery__search label,
@@ -179,6 +180,7 @@ a {
 
 @media (max-width: 850px) {
   .row {
-    grid-template-columns: 1fr; /* nur eine Spalte */
+    grid-template-columns: 1fr;
+    /* nur eine Spalte */
   }
 }
