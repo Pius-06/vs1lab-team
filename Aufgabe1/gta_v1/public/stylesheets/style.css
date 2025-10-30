@@ -116,9 +116,9 @@ a {
 
 .main {
   display: flex;
-  justify-content: space-between; /* Abstand zwischen den beiden Bereichen */
-  align-items: flex-start; /* richtet sie oben aus */
-  gap: 20px; /* optionaler Abstand */
+  justify-content: space-between; 
+  align-items: flex-start;
+  gap: 20px; 
   padding: 20px;
 }
 
@@ -214,10 +214,23 @@ button {
 
 
 /* ### TODO ### Media Queries Pius*/
-
 @media (max-width: 850px) {
-  .row {
-    grid-template-columns: 1fr;
-    /* nur eine Spalte */
+  .main {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .discovery__wrapper {
+    flex-direction: column;
+  }
+
+  .main__tagging,
+  .main__discovery {
+    width: 100%;
+  }
+
+  .discovery__map img {
+    max-width: 100%;
   }
 }
+
