@@ -122,14 +122,12 @@ a {
   padding: 20px;
 }
 
-/* Tagging - wąska kolumna (około 30% szerokości) */
 .main__tagging {
   flex: 0 0 30%;
   max-width: 350px;
   padding: 15px;
 }
 
-/* Discovery - szeroka kolumna (zabiera resztę miejsca) */
 .main__discovery {
   flex: 1;
   padding: 15px;
