@@ -192,6 +192,29 @@ button:hover {
   padding: 15px;
 }
 
+.discovery__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/*  Marlon */
+.discovery__taglist {
+  flex: 0 0 30%;
+  max-width: 350px;
+  padding: 15px;
+}
+
+/* Marlon */
+.discovery__map {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  padding: 15px;
+}
+
 /* ### TODO ### Styles for Tagging component Radek */
 
 h2 {
