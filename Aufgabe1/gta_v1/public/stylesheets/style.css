@@ -135,7 +135,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: lightgray;
+  background-color: rgb(168, 168, 168);
   color: black;
   padding: 15px 25px;
   border-bottom: 1px solid gray;
@@ -296,7 +296,7 @@ button {
 .footer {
   margin-top: auto;
   text-align: center;
-  background-color: lightgray;
+  background-color: rgb(168, 168, 168);
   color: black;
   padding: 15px 0;
   border-top: 1px solid grey;
