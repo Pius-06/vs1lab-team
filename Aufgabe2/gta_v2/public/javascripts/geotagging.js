@@ -117,29 +117,43 @@ class MapManager {
     * It is called once the page has been fully loaded.
     */
     updateLocation() {
-        const latitude = LocationHelper.latitude;
-        const longitude = LocationHelper.longitude;
+        // Teil 1
+        LocationHelper.findLocation((locationHelper) => {
+            const lat = locationHelper.latitude;
+            const lon = locationHelper.longitude;
 
-        const latitudeInput = document.querySelector('#latitude');
-        const longitudeInput = document.querySelector('#longitude');
+            const latitudeInput = document.querySelector('#latitude');
+            const longitudeInput = document.querySelector('#longitude');
 
-        if (latitudeInput) {
-            latitudeInput.value = latitude;
-        }
+            if (latitudeInput) {
+                latitudeInput.value = lat;
+            }
+            if (longitudeInput) {
+                longitudeInput.value = lon;
+            }
+            const discoveryLatInput = document.querySelector('#latitudeHidden');
+            const discoveryLonInput = document.querySelector('#longitudeHidden');
 
-        if (longitudeInput) {
-            longitude.value = longitude;
-        }
-        const discoveryLatInput = document.querySelector('Pius');
-        const discoveryLonInput = document.querySelector('Pius');
+            if (discoveryLatInput) {
+                discoveryLatInput.value = lat;
+            }
+            if (discoveryLonInput) {
+                discoveryLonInput.value = lon;
+            }
 
-        if (discoveryLatInput) {
-            discoveryLatInput.value = lat;
-        }
-        if (discoveryLonInput) {
-            discoveryLonInput.value = lon;
-        }
+            this.initMap(lat, lon);
+            this.updateMarkers(lat, lon);
 
+            const imgElement = document.querySelector('img');
+            if (imgElement) {
+                imgElement.remove();
+            }
+
+            const descriptionParagraph = document.querySelector('p');
+            if (descriptionParagraph) {
+                descriptionParagraph.remove();
+            }
+        });
     }
 }
 
@@ -147,5 +161,6 @@ class MapManager {
 document.addEventListener("DOMContentLoaded", () => {
     alert("Please change the script 'geotagging.js'");
 
+    const mapManager = new MapManager();
     mapManager.updateLocation();
 });
