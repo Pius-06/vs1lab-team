@@ -243,6 +243,10 @@ button {
   height: 500px;
 }
 
+.discovery__map {
+  display: flex;
+  flex-direction: column;
+}
 
 .discovery__results {
   display: flex;
