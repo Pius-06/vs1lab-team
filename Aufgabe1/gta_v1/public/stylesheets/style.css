@@ -56,17 +56,43 @@ h2,
 h3 {
   font-weight: bold;
   color: rgb(0, 0, 0);
-  ;
+}
+
+h2 {
+  margin-bottom: 15px;
 }
 
 p {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   line-height: 1.5;
 }
 
 ul {
   list-style: none;
   padding-left: 0;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid var(--border-color);
+  padding: 15px;
+}
+
+label {
+  color: var(--gray-color);
+  margin-bottom: 0;
+  font-size: 16px
+}
+
+input {
+  width: 100%;
+  padding: 12px 6px;
+  border: 0.5px solid var(--border-color);
+  color: black;
+  font-size: 16px;
+  background-color: #fff;
 }
 
 /* Grid styles (no changes required) */
@@ -160,14 +186,12 @@ ul {
   text-decoration: none;
   margin: 0 6px;
   font-weight: bold;
-}
-
-.header__navigation a:hover {
   text-decoration: underline;
 }
 
 
-/* ### TODO ### Styles for Main Component Radek*/
+
+/* ### TODO ### Styles for Main Component Pius*/
 
 .main {
   display: flex;
@@ -177,17 +201,9 @@ ul {
   padding: 20px;
 }
 
-
-/* Tagging - wąska kolumna (około 30% szerokości) */
 .main__tagging {
   flex: 0 0 30%;
   max-width: 350px;
-  padding: 15px;
-}
-
-/* Discovery - szeroka kolumna (zabiera resztę miejsca) */
-.main__discovery {
-  flex: 1;
   padding: 15px;
 }
 
@@ -197,37 +213,6 @@ ul {
 }
 
 /* ### TODO ### Styles for Tagging component Radek */
-
-h2 {
-  margin-bottom: 10px;
-  font-size: 24px;
-}
-
-/* Fieldset */
-fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  border: 1px solid var(--border-color);
-  padding: 15px;
-}
-
-/* labels */
-label {
-  color: var(--gray-color);
-  margin-bottom: 0;
-  font-size: 16px
-}
-
-/* inputs */
-input {
-  width: 100%;
-  padding: 12px 6px;
-  border: 0.5px solid var(--border-color);
-  color: black;
-  font-size: 16px;
-  background-color: #fff;
-}
 
 /* placeholder style for readonly */
 #tag-form input[readonly] {
@@ -239,6 +224,8 @@ input {
   color: var(--gray-color);
 }
 
+
+/* Pius */
 button {
   width: 100%;
   padding: 10px;
@@ -255,11 +242,10 @@ button {
 .discovery__search button {
   width: 200px;
   align-self: flex-start;
-  /* Links ausrichten */
 }
 
 .discovery__search button {
-  color: rgb(168, 168, 168);
+  color: var(--gray-color);
 }
 
 .discovery__wrapper {
@@ -283,11 +269,10 @@ button {
 
 .discovery__results li {
   background-color: var(--background-color);
-  color: #00B7FF;
+  color: var(--link-color);
   padding: 15px;
   border: 1px solid var(--border-color);
 }
-
 
 
 /* ### TODO ### Styles for Footer Component Marlon*/
