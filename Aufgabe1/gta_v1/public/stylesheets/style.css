@@ -27,7 +27,7 @@ html {
   --link-color: #00B7FF;
   --background-color: #efefef;
   --border-color: #cdcdcd;
-  --gray-color: #666;
+  --gray-color: #868686;
 }
 
 
@@ -51,13 +51,19 @@ footer {
   width: 100%;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: bold;
-  color: #333;
+  color: rgb(0, 0, 0);
+}
+
+h2 {
+  margin-bottom: 15px;
 }
 
 p {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   line-height: 1.5;
 }
 
@@ -66,10 +72,28 @@ ul {
   padding-left: 0;
 }
 
-button:hover {
-  background-color: black;
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid var(--border-color);
+  padding: 15px;
 }
 
+label {
+  color: var(--gray-color);
+  margin-bottom: 0;
+  font-size: 16px
+}
+
+input {
+  width: 100%;
+  padding: 12px 6px;
+  border: 0.5px solid var(--border-color);
+  color: black;
+  font-size: 16px;
+  background-color: #fff;
+}
 
 /* Grid styles (no changes required) */
 
@@ -131,14 +155,43 @@ button:hover {
 
 /* ### TODO ### Styles for Header Component Marlon*/
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #EFEFEF;
+  color: black;
+  padding: 40px;
+  border-bottom: 1px solid #d6d6d6;
+}
 
+.header__image {
+  width: 50px;
+  height: 50px;
+}
 
-.header__navigation a:hover {
+.header__title {
+  flex: 1;
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.header__navigation {
+  font-size: 16px;
+}
+
+.header__navigation a {
+  color: #00B7FF;
+  text-decoration: none;
+  margin: 0 6px;
+  font-weight: bold;
   text-decoration: underline;
 }
 
 
-/* ### TODO ### Styles for Main Component Radek*/
+
+/* ### TODO ### Styles for Main Component Pius*/
 
 .main {
   display: flex;
@@ -148,103 +201,18 @@ button:hover {
   padding: 20px;
 }
 
-/* Tagging - wąska kolumna (około 30% szerokości) */
 .main__tagging {
   flex: 0 0 30%;
   max-width: 350px;
   padding: 15px;
 }
 
-/* Discovery - szeroka kolumna (zabiera resztę miejsca) */
 .main__discovery {
   flex: 1;
   padding: 15px;
 }
 
-.header {
-  display: grid;
-  grid-template-columns: 60px 1fr auto;
-  align-items: center;
-  background-color: var(--header-bg, #f2f2f2);
-  color: #222;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid var(--border-color);
-  gap: 1rem;
-}
-
-.header__image {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-}
-
-.header__title {
-  justify-self: center;
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.header__navigation {
-  display: flex;
-  gap: 10px;
-}
-.discovery__wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-/*  Marlon */
-.discovery__taglist {
-  flex: 0 0 30%;
-  max-width: 350px;
-  padding: 15px;
-}
-
-/* Marlon */
-.discovery__map {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex: 1;
-  padding: 15px;
-}
-
 /* ### TODO ### Styles for Tagging component Radek */
-
-h2 {
-  margin-bottom: 10px;
-  font-size: 24px;
-}
-
-/* Fieldset */
-fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  border: 1px solid var(--border-color);
-  padding: 15px;
-}
-
-/* labels */
-label {
-  color: var(--gray-color);
-  margin-bottom: 0;
-  font-size: 16px
-}
-
-/* inputs */
-input {
-  width: 100%;
-  padding: 12px 6px;
-  border: 0.5px solid var(--border-color);
-  color: black;
-  font-size: 16px;
-  background-color: #fff;
-}
 
 /* placeholder style for readonly */
 #tag-form input[readonly] {
@@ -256,6 +224,8 @@ input {
   color: var(--gray-color);
 }
 
+
+/* Pius */
 button {
   width: 100%;
   padding: 10px;
@@ -266,60 +236,98 @@ button {
   margin-top: 5px;
 }
 
-@media (max-width=850px) {
-  #tag-form fieldset {
-    max-width: 100%;
-  }
-}
-
 /* ### TODO ### Styles for Discovery component Pius*/
-
 
 .discovery__search input,
 .discovery__search button {
   width: 200px;
   align-self: flex-start;
-  /* Links ausrichten */
 }
 
 .discovery__search button {
-  color: rgb(168, 168, 168);
+  color: var(--gray-color);
 }
 
+.discovery__wrapper {
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
 
+.discovery__map {
+  display: flex;
+  flex-direction: column;
+}
+
+.discovery__results {
+  display: flex;
+  flex-direction: column;
+  gap: 20px
+}
+
+.discovery__results li {
+  background-color: var(--background-color);
+  color: var(--link-color);
+  padding: 15px;
+  border: 1px solid var(--border-color);
+}
 
 
 /* ### TODO ### Styles for Footer Component Marlon*/
 
 .footer {
-  display: grid;
-  place-items: center;
-  background-color: var(--footer-bg, #f2f2f2);
-  color: #444;
-  padding: 15px 0;
-  border-top: 1px solid var(--border-color);
-  font-size: 0.9rem;
+  margin-top: auto;
+  text-align: left;
+  background-color: #EFEFEF;
+  color: black;
+  padding: 30px;
+  border-top: 1px solid #d6d6d6;
+  font-size: 14px;
 }
 
 
 /* ### TODO ### Media Queries Pius*/
-@media (max-width: 850px) {
-  .main {
+@media (max-width: 1100px) {
+  .discovery__results {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+
+  .discovery__wrapper {
+    padding-top: 40px;
+    display: flex;
     flex-direction: column;
     align-items: stretch;
+    gap: 40px;
+  }
+
+}
+
+@media (max-width: 750px) {
+  .main {
+    flex-direction: column;
   }
 
   .discovery__wrapper {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .main__tagging,
   .main__discovery {
     width: 100%;
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .discovery__results {
+    flex-direction: column;
   }
 
   .discovery__map img {
-    max-width: 100%;
+    width: 100%;
   }
 }
-
