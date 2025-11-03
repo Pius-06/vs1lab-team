@@ -55,7 +55,7 @@ h1,
 h2,
 h3 {
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: black;
 }
 
 h2 {
@@ -69,7 +69,6 @@ p {
 
 ul {
   list-style: none;
-  padding-left: 0;
 }
 
 fieldset {
@@ -92,7 +91,16 @@ input {
   border: 0.5px solid var(--border-color);
   color: black;
   font-size: 16px;
-  background-color: #fff;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 5px;
 }
 
 /* Grid styles (no changes required) */
@@ -159,10 +167,10 @@ input {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #EFEFEF;
+  background-color: var(--background-color);
   color: black;
   padding: 40px;
-  border-bottom: 1px solid #d6d6d6;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .header__image {
@@ -182,66 +190,39 @@ input {
 }
 
 .header__navigation a {
-  color: #00B7FF;
-  text-decoration: none;
-  margin: 0 6px;
+  color: var(--link-color);
+  margin: 0px 6px;
   font-weight: bold;
   text-decoration: underline;
 }
 
 
-
 /* ### TODO ### Styles for Main Component Pius*/
 
 .main {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 20px;
-}
-
-.main__tagging {
-  flex: 0 0 30%;
-  max-width: 350px;
-  padding: 15px;
-}
-
-.main__discovery {
-  flex: 1;
-  padding: 15px;
+  gap: 15px;
+  padding: 40px;
 }
 
 /* ### TODO ### Styles for Tagging component Radek */
 
-/* placeholder style for readonly */
 #tag-form input[readonly] {
   background-color: var(--background-color);
 }
 
-/* placeholder style  */
 #tag-form input::placeholder {
   color: var(--gray-color);
 }
 
-
-/* Pius */
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: var(--background-color);
-  border: 1px solid var(--border-color);
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 5px;
+.main__tagging button {
+  color: black;
 }
 
 /* ### TODO ### Styles for Discovery component Pius*/
 
 .discovery__search input,
 .discovery__search button {
-  width: 200px;
-  align-self: flex-start;
+  width: 250px;
 }
 
 .discovery__search button {
@@ -249,11 +230,7 @@ button {
 }
 
 .discovery__wrapper {
-  padding-top: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
+  padding-top: 30px;
 }
 
 .discovery__map {
@@ -280,30 +257,35 @@ button {
 .footer {
   margin-top: auto;
   text-align: left;
-  background-color: #EFEFEF;
+  background-color: var(--background-color);
   color: black;
   padding: 30px;
-  border-top: 1px solid #d6d6d6;
+  border-top: 1px solid var(--border-color);
   font-size: 14px;
 }
 
 
 /* ### TODO ### Media Queries Pius*/
-@media (max-width: 1100px) {
-  .discovery__results {
-    flex-direction: row;
-    align-items: stretch;
-  }
+@media (max-width: 1120px) {
 
-
-  .discovery__wrapper {
-    padding-top: 40px;
+  .discovery__wrapper.row {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 40px;
+    gap: 30px;
   }
 
+  .discovery__taglist.col-4 {
+    width: 100%;
+  }
+
+  .discovery__map.col-8 {
+    width: 100%;
+  }
+
+  .discovery__results {
+    align-items: stretch;
+  }
 }
 
 @media (max-width: 750px) {
@@ -313,21 +295,20 @@ button {
 
   .discovery__wrapper {
     flex-direction: column;
-    align-items: stretch;
   }
 
-  .main__tagging,
-  .main__discovery {
+  .main__tagging.col-4,
+  .main__discovery.col-8 {
     width: 100%;
-    max-width: 100%;
-    flex: 1 1 100%;
   }
 
   .discovery__results {
     flex-direction: column;
   }
 
-  .discovery__map img {
+  .discovery__search input,
+  .discovery__search button {
     width: 100%;
   }
+
 }
