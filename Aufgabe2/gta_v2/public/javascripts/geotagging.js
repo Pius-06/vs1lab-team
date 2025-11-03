@@ -144,7 +144,7 @@ class MapManager {
             this.initMap(lat, lon);
             this.updateMarkers(lat, lon);
 
-            const imgElement = document.querySelector('img');
+            const imgElement = document.querySelector('#mapView');
             if (imgElement) {
                 imgElement.remove();
             }
