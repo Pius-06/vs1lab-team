@@ -230,12 +230,14 @@ button {
 }
 
 .discovery__wrapper {
+  display: flex;
+  width: 100%;
   padding-top: 30px;
 }
 
 .discovery__wrapper.row {
     display: flex;
-    align-items: flex-start; /* keine automatische Streckung */
+    align-items: flex-start; 
 }
 
 /* Aufgabe 2*/
@@ -243,14 +245,12 @@ button {
   height: 500px;
 }
 
-.discovery__map {
-  display: flex;
-  flex-direction: column;
-}
+
+  .discovery__map {
+    height: 500px;
+  }
 
 .discovery__results {
-  display: flex;
-  flex-direction: column;
   gap: 20px
 }
 
