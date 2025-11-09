@@ -237,7 +237,17 @@ button {
 
 .discovery__wrapper.row {
     display: flex;
-    align-items: flex-start; 
+    align-items: flex-start; /* keine automatische Streckung */
+}
+
+/* Aufgabe 2*/
+#map {
+  height: 500px;
+}
+
+.discovery__map {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Aufgabe 2*/

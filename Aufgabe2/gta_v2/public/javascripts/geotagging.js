@@ -160,7 +160,7 @@ class MapManager {
 
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
-    alert("Please change the script 'geotagging.js'");
+    // alert("Please change the script 'geotagging.js'");
 
     const mapManager = new MapManager();
     mapManager.updateLocation();
