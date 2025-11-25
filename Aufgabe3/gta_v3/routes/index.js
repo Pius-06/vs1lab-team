@@ -61,6 +61,16 @@ router.get('/', (req, res) => {
  */
 
 // TODO: ... your code here ...
+router.post('/tagging', (req, res) => {
+  const tag = new GeoTag(
+    req.body.name,
+    parseFloat(req.body.latitude),
+    parseFloat(req.body.longitude)
+  );
+  store.addGeoTag(tag);
+  const nearbyTags = store.getNearbyGeoTags(lat, lon, 0.01);
+  res.render('index', { taglist: nearbyTags }) // Nimmt das EJS-Template index.ejs und fügt taglist ein.
+});
 
 /**
  * Route '/discovery' for HTTP 'POST' requests.
@@ -79,5 +89,14 @@ router.get('/', (req, res) => {
  */
 
 // TODO: ... your code here ...
+router.post('/discovery', (req, res) => {
+  const latitude = parseFloat(req.body.latitude);
+  const longitude = parseFloat(req.body.longitude);
+  const searchTerm = req.body.searchTerm;
+
+  let nearbyTags = store.searchNearbyGeoTags(latitude, longitude, searchTerm, 0.01);
+  res.render('index', { taglist: nearbyTags })
+})
+
 
 module.exports = router;
