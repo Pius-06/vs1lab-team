@@ -1,20 +1,34 @@
 <!-- TODO: HTML AUS AUFGABE2 HIERHER KOPIEREN UND DIE BEISPIEL-EINTRÄGE DER DISCOVERY-LISTE MIT DEN FOLGENDEN ZEILEN ERSETZEN -->
 <!DOCTYPE html>
 
+<<<<<<< HEAD
+=======
+
+
+<!DOCTYPE html>
+
+>>>>>>> 89453ad (add html-document to ejs-template)
 <!-- File origin: VS1LAB A1a -->
 
 <html lang="en">
 
 <head>
     <!-- Leaflet CSS and JavaScript (in this order) -->
+<<<<<<< HEAD
+=======
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+>>>>>>> 89453ad (add html-document to ejs-template)
     <link rel='stylesheet' href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<<<<<<< HEAD
     <script src="./javascripts/location-helper.js"></script>
     <script src="./javascripts/map-manager.js"></script>
     <script src="./javascripts/geotagging.js"></script>
 
+=======
+>>>>>>> 89453ad (add html-document to ejs-template)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoTagApp</title>
@@ -41,12 +55,19 @@
                     <legend>Add a new GeoTag</legend>
 
                     <label for="latitude">Latitude:</label>
+<<<<<<< HEAD
                     <input id="latitude" name="latitude" type="text" placeholder="49.01379" value="<%=latitude || ''%>"
                         readonly>
 
                     <label for="longitude">Longitude:</label>
                     <input id="longitude" name="longitude" type="text" placeholder="8.390071"
                         value="<%=longitude || '' %>" readonly>
+=======
+                    <input id="latitude" name="latitude" type="text" placeholder="49.01379" readonly>
+
+                    <label for="longitude">Longitude:</label>
+                    <input id="longitude" name="longitude" type="text" placeholder="8.390071" readonly>
+>>>>>>> 89453ad (add html-document to ejs-template)
 
                     <label for="name">Name:</label>
                     <input id="name" name="name" type="text" placeholder="e.g. Central Berlin" maxlength="10" required>
@@ -69,6 +90,7 @@
             <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
                 <fieldset>
                     <legend>Search</legend>
+<<<<<<< HEAD
 
                     <label for="searchTerm">Search term of keywords:</label>
                     <input id="searchTerm" name="searchTerm" type="text" pattern="[A-Za-zÄÖÜäöüß]{1,10}"
@@ -79,6 +101,15 @@
                     <input id="longitudeHidden" name="longitudeHidden" type="text" value="<%= longitude || '' %>"
                         hidden>
 
+=======
+                    <label for="searchTerm">Search term of keywords:</label>
+                    <input id="searchTerm" type="text" required pattern="[A-Za-zÄÖÜäöüß]{1,10}"
+                        placeholder="e.g. Berlin">
+                    <button class="searchButton" type="submit">Search</button>
+
+                    <input id="latitudeHidden" name="latitudeHidden" type="text" hidden>
+                    <input id="longitudeHidden" name="longitudeHidden" type="text" hidden>
+>>>>>>> 89453ad (add html-document to ejs-template)
                 </fieldset>
 
             </form>
@@ -91,11 +122,19 @@
                             <li>
                                 <%= gtag.name %> ( <%= gtag.latitude %>,<%= gtag.longitude %>) <%= gtag.hashtag %>
                             </li>
+<<<<<<< HEAD
                             <% }); %>
                     </ul>
                 </div>
 
                 <div id="map" class="discovery__map col-8" data-tags='<%- JSON.stringify(taglist || [])%>'>
+=======
+                        <% }); %>
+                    </ul>
+                </div>
+
+                <div id="map" class="discovery__map col-8">
+>>>>>>> 89453ad (add html-document to ejs-template)
                     <img src="./images/mapview.jpg" alt="a map with locations" id="mapView" />
                     <span>Result map</span>
                 </div>
