@@ -128,6 +128,7 @@
                     </ul>
                 </div>
 
+<<<<<<< HEAD
                 <div id="map" class="discovery__map col-8" data-tags='<%- JSON.stringify(taglist || [])%>'>
 =======
                         <% }); %>
@@ -139,6 +140,9 @@
 
                 <div id="map" class="discovery__map col-8">
 >>>>>>> 89453ad (add html-document to ejs-template)
+=======
+                <div id="map" class="discovery__map col-8" data-tags='<%= JSON.stringify(taglist) %>'>
+>>>>>>> b6d926b (add data-* attribute in #map-element)
                     <img src="./images/mapview.jpg" alt="a map with locations" id="mapView" />
                     <span>Result map</span>
                 </div>
@@ -154,7 +158,10 @@
     <!-- Load JavaScripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./javascripts/geotagging.js"></script>
+    <script src="/javascripts/location-helper.js"></script>
+    <script src="/javascripts/map-manager.js"></script>
+    <script src="/javascripts/geotagging.js"></script>
+
 </body>
 
 </html>
