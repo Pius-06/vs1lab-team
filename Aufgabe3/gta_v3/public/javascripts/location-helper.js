@@ -1,10 +1,15 @@
 // File origin: VS1LAB A2 
 
 /**
+<<<<<<< HEAD
  * A class to help using the HTML5 Geolocation API.
  */
 // eslint-disable-next-line no-unused-vars
 
+=======
+  * A class to help using the HTML5 Geolocation API.
+  */
+>>>>>>> c819ee4 (MapManager and LocationHelper classes moved to separate scripts and the updateLocation function optimized)
 class LocationHelper {
     // Location values for latitude and longitude are private properties to protect them from changes.
     #latitude = '';
@@ -58,4 +63,10 @@ class LocationHelper {
             alert(error.message)
         });
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+export default LocationHelper;
+>>>>>>> c819ee4 (MapManager and LocationHelper classes moved to separate scripts and the updateLocation function optimized)

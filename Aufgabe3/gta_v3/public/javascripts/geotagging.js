@@ -1,3 +1,6 @@
+import LocationHelper from './location-helper.js';
+import MapManager from './map-manager.js';
+
 // File origin: VS1LAB A2
 
 /* eslint-disable no-unused-vars */
@@ -9,6 +12,7 @@
 // Try to find this output in the browser...
 console.log("The geoTagging script is going to start...");
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
@@ -162,6 +166,8 @@ class MapManager {
     }
 }
 
+=======
+>>>>>>> c819ee4 (MapManager and LocationHelper classes moved to separate scripts and the updateLocation function optimized)
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
     // alert("Please change the script 'geotagging.js'");
