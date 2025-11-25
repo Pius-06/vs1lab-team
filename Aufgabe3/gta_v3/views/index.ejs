@@ -103,7 +103,7 @@
 
 =======
                     <label for="searchTerm">Search term of keywords:</label>
-                    <input id="searchTerm" type="text" required pattern="[A-Za-zÄÖÜäöüß]{1,10}"
+                    <input id="searchTerm" type="text" required pattern="[A-Za-zÄÖÜäöüß]" minlength="1" maxlength="10"
                         placeholder="e.g. Berlin">
                     <button class="searchButton" type="submit">Search</button>
 
@@ -123,6 +123,7 @@
                                 <%= gtag.name %> ( <%= gtag.latitude %>,<%= gtag.longitude %>) <%= gtag.hashtag %>
                             </li>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <% }); %>
                     </ul>
                 </div>
@@ -130,6 +131,9 @@
                 <div id="map" class="discovery__map col-8" data-tags='<%- JSON.stringify(taglist || [])%>'>
 =======
                         <% }); %>
+=======
+                            <% }); %>
+>>>>>>> 9701080 (fixed bug in searchTerm)
                     </ul>
                 </div>
 
