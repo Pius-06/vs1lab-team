@@ -68,7 +68,7 @@
                 <fieldset>
                     <legend>Search</legend>
                     <label for="searchTerm">Search term of keywords:</label>
-                    <input id="searchTerm" type="text" required pattern="[A-Za-zÄÖÜäöüß]{1,10}"
+                    <input id="searchTerm" type="text" required pattern="[A-Za-zÄÖÜäöüß]" minlength="1" maxlength="10"
                         placeholder="e.g. Berlin">
                     <button class="searchButton" type="submit">Search</button>
 
@@ -86,7 +86,7 @@
                             <li>
                                 <%= gtag.name %> ( <%= gtag.latitude %>,<%= gtag.longitude %>) <%= gtag.hashtag %>
                             </li>
-                        <% }); %>
+                            <% }); %>
                     </ul>
                 </div>
 
