@@ -93,13 +93,14 @@ class InMemoryGeoTagStore {
         let nearbyTags = this.getNearbyGeoTags(latitude, longitude, distance);
         let nearbyTagsWithTerm = [];
         nearbyTags.forEach(nearbyTag => {
-            if (nearbyTag.name.includes(searchTerm) || tag.hashtag.includes(searchTerm)) {
+            if (nearbyTag.name.includes(searchTerm) || nearbyTag.hashtag.includes(searchTerm)) {
                 nearbyTagsWithTerm.push(nearbyTag);
             }
         });
         return nearbyTagsWithTerm;
     }
 
+    // Rechteck, kein Kreis!
     isTagNearbyLocation(latitude, longitude, distance, tag) {
         if ((tag.latitude < latitude + distance) && (tag.latitude > latitude - distance)) {
             if ((tag.longitude < longitude + distance) && (tag.longitude > longitude - distance)) {
