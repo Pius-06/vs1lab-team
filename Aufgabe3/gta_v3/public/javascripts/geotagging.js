@@ -170,9 +170,12 @@ class MapManager {
 >>>>>>> c819ee4 (MapManager and LocationHelper classes moved to separate scripts and the updateLocation function optimized)
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
+<<<<<<< HEAD
     // alert("Please change the script 'geotagging.js'");
 
 >>>>>>> 2a76a9b (Add geotagging.js and style.css to Aufgabe3)
+=======
+>>>>>>> dd08d1e (delete unused line)
     const mapManager = new MapManager();
     mapManager.updateLocation();
 });
