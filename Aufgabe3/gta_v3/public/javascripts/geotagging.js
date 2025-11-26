@@ -14,8 +14,6 @@ console.log("The geoTagging script is going to start...");
 
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
-    // alert("Please change the script 'geotagging.js'");
-
     const mapManager = new MapManager();
     mapManager.updateLocation();
 });
