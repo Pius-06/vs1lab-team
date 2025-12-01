@@ -155,9 +155,9 @@ class MapManager {
                     discoveryLonInput.value = lon;
                 }
 
-                const mapDiv = document.getElementById('map');      // <div id="map">
-                const tagsJson = mapDiv.dataset.tags;              // data-tags auslesen (JSON-String)
-                const tagsArray = JSON.parse(tagsJson);            // in JavaScript-Array umwandeln
+                const mapDiv = document.getElementById('#map');      // <div id="map">
+                const tagsJson = mapElement?.getElementById('data-tags');  
+                tagsJson ? JSON.parse(tagsJson) : [];            // in JavaScript-Array umwandeln
 
                 this.initMap(lat, lon);
                 this.updateMarkers(lat, lon, tagsArray);
