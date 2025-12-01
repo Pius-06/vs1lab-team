@@ -30,6 +30,8 @@ const GeoTag = require('../models/geotag');
  */
 // eslint-disable-next-line no-unused-vars
 const GeoTagStore = require('../models/geotag-store');
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 const GeoTagExamples = require('../models/geotag-examples');
 
@@ -39,6 +41,12 @@ GeoTagExamples.tagList.forEach(([name, latitude, longitude, hashtag]) => {
 });
 
 
+=======
+const store = new GeoTagStore();
+>>>>>>> ca9d3c9 (correct paramter order in post discovery)
+=======
+const store = new GeoTagStore();
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 /**
  * Route '/' for HTTP 'GET' requests.
  * (http://expressjs.com/de/4x/api.html#app.get.method)
@@ -72,6 +80,8 @@ router.get('/', (req, res) => {
  */
 
 // TODO: ... your code here ...
+<<<<<<< HEAD
+<<<<<<< HEAD
 router.post("/tagging", (req, res) => {
   const { latitude, longitude, name, hashtag } = req.body;
   const newTag = new GeoTag(name, latitude, longitude, hashtag);
@@ -88,6 +98,22 @@ router.post("/tagging", (req, res) => {
     latitude,
     longitude
   });
+=======
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
+router.post('/tagging', (req, res) => {
+  const tag = new GeoTag(
+    req.body.name,
+    parseFloat(req.body.latitude),
+    parseFloat(req.body.longitude)
+  );
+  store.addGeoTag(tag);
+  const nearbyTags = store.getNearbyGeoTags(tag.latitude, tag.longitude, 0.05);
+  res.render('index', { taglist: nearbyTags }) // Nimmt das EJS-Template index.ejs und fügt taglist ein.
+<<<<<<< HEAD
+>>>>>>> 0a5b7e0 (implement routes for /tagging and /discovery)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 });
 
 /**
@@ -108,6 +134,9 @@ router.post("/tagging", (req, res) => {
 
 // TODO: ... your code here ...
 router.post('/discovery', (req, res) => {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   const { latitudeHidden, longitudeHidden, searchTerm } = req.body;
 
   let results;
@@ -132,5 +161,26 @@ router.post('/discovery', (req, res) => {
     longitude: longitudeHidden
   });
 });
+=======
+  const latitude = parseFloat(req.body.latitude);
+  const longitude = parseFloat(req.body.longitude);
+=======
+  const latitude = parseFloat(req.body.latitudeHidden);
+  const longitude = parseFloat(req.body.longitudeHidden);
+>>>>>>> ca9d3c9 (correct paramter order in post discovery)
+=======
+  const latitude = parseFloat(req.body.latitudeHidden);
+  const longitude = parseFloat(req.body.longitudeHidden);
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
+  const searchTerm = req.body.searchTerm;
+
+  let nearbyTags = store.searchNearbyGeoTags(latitude, longitude, 0.05, searchTerm);
+  res.render('index', { taglist: nearbyTags })
+})
+
+<<<<<<< HEAD
+>>>>>>> 0a5b7e0 (implement routes for /tagging and /discovery)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 
 module.exports = router;

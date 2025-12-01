@@ -1,3 +1,6 @@
+import LocationHelper from './location-helper.js';
+import MapManager from './map-manager.js';
+
 // File origin: VS1LAB A2
 
 /* eslint-disable no-unused-vars */
@@ -9,8 +12,175 @@
 // Try to find this output in the browser...
 console.log("The geoTagging script is going to start...");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
+=======
+/**
+  * A class to help using the HTML5 Geolocation API.
+  */
+class LocationHelper {
+    // Location values for latitude and longitude are private properties to protect them from changes.
+    #latitude = '';
+
+    /**
+     * Getter method allows read access to privat location property.
+     */
+    get latitude() {
+        return this.#latitude;
+    }
+
+    #longitude = '';
+
+    get longitude() {
+        return this.#longitude;
+    }
+
+    /**
+     * Create LocationHelper instance if coordinates are known.
+     * @param {string} latitude 
+     * @param {string} longitude 
+     */
+    constructor(latitude, longitude) {
+        this.#latitude = (parseFloat(latitude)).toFixed(5);
+        this.#longitude = (parseFloat(longitude)).toFixed(5);
+    }
+
+    /**
+     * The 'findLocation' method requests the current location details through the geolocation API.
+     * It is a static method that should be used to obtain an instance of LocationHelper.
+     * Throws an exception if the geolocation API is not available.
+     * @param {*} callback a function that will be called with a LocationHelper instance as parameter, that has the current location details
+     */
+    static findLocation(callback) {
+        const geoLocationApi = navigator.geolocation;
+
+        if (!geoLocationApi) {
+            throw new Error("The GeoLocation API is unavailable.");
+        }
+
+        // Call to the HTML5 geolocation API.
+        // Takes a first callback function as argument that is called in case of success.
+        // Second callback is optional for handling errors.
+        // These callbacks are given as arrow function expressions.
+        geoLocationApi.getCurrentPosition((location) => {
+            // Create and initialize LocationHelper object.
+            let helper = new LocationHelper(location.coords.latitude, location.coords.longitude);
+            // Pass the locationHelper object to the callback.
+            callback(helper);
+        }, (error) => {
+            alert(error.message)
+        });
+    }
+}
+
+/**
+ * A class to help using the Leaflet map service.
+ */
+class MapManager {
+
+    #map
+    #markers
+
+    /**
+    * Initialize a Leaflet map
+    * @param {number} latitude The map center latitude
+    * @param {number} longitude The map center longitude
+    * @param {number} zoom The map zoom, defaults to 18
+    */
+    initMap(latitude, longitude, zoom = 18) {
+        // set up dynamic Leaflet map
+        this.#map = L.map('map').setView([latitude, longitude], zoom);
+        var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; ' + mapLink + ' Contributors'
+        }).addTo(this.#map);
+        this.#markers = L.layerGroup().addTo(this.#map);
+    }
+
+    /**
+    * Update the Markers of a Leaflet map
+    * @param {number} latitude The map center latitude
+    * @param {number} longitude The map center longitude
+    * @param {{latitude, longitude, name}[]} tags The map tags, defaults to just the current location
+    */
+    updateMarkers(latitude, longitude, tags = []) {
+        // delete all markers
+        this.#markers.clearLayers();
+        L.marker([latitude, longitude])
+            .bindPopup("Your Location")
+            .addTo(this.#markers);
+        for (const tag of tags) {
+            L.marker([tag.latitude, tag.longitude])
+                .bindPopup(tag.name)
+                .addTo(this.#markers);
+        }
+    }
+
+    /**
+    * TODO: 'updateLocation'
+    * A function to retrieve the current location and update the page.
+    * It is called once the page has been fully loaded.
+    */
+    updateLocation() {
+        // Teil 1
+        LocationHelper.findLocation((locationHelper) => {
+            // Koordinaten bestimmen
+            const lat = locationHelper.latitude;
+            const lon = locationHelper.longitude;
+
+            const latitudeInput = document.querySelector('#latitude');
+            const longitudeInput = document.querySelector('#longitude');
+            const discoveryLatInput = document.querySelector('#latitudeHidden');
+            const discoveryLonInput = document.querySelector('#longitudeHidden');
+
+            // Koordinaten in Formulare eintragen
+            if (latitudeInput) {
+                latitudeInput.value = lat;
+            }
+            if (longitudeInput) {
+                longitudeInput.value = lon;
+            }
+            if (discoveryLatInput) {
+                discoveryLatInput.value = lat;
+            }
+            if (discoveryLonInput) {
+                discoveryLonInput.value = lon;
+            }
+
+            this.initMap(lat, lon);
+            this.updateMarkers(lat, lon);
+
+            const imgElement = document.querySelector('#mapView');
+            if (imgElement) {
+                imgElement.remove();
+            }
+
+            const descriptionParagraph = document.querySelector('span');
+            if (descriptionParagraph) {
+                descriptionParagraph.remove();
+            }
+        });
+    }
+}
+
+=======
+>>>>>>> c819ee4 (MapManager and LocationHelper classes moved to separate scripts and the updateLocation function optimized)
+// Wait for the page to fully load its DOM content, then call updateLocation
+document.addEventListener("DOMContentLoaded", () => {
+<<<<<<< HEAD
+    // alert("Please change the script 'geotagging.js'");
+
+>>>>>>> 2a76a9b (Add geotagging.js and style.css to Aufgabe3)
+=======
+>>>>>>> dd08d1e (delete unused line)
+=======
+// Wait for the page to fully load its DOM content, then call updateLocation
+document.addEventListener("DOMContentLoaded", () => {
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
     const mapManager = new MapManager();
     mapManager.updateLocation();
 });

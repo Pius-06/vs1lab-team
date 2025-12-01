@@ -230,6 +230,8 @@ button {
 }
 
 .discovery__wrapper {
+<<<<<<< HEAD
+<<<<<<< HEAD
   padding-top: 30px;
 }
 
@@ -242,6 +244,44 @@ button {
 .discovery__results {
   display: flex;
   flex-direction: column;
+=======
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
+  display: flex;
+  width: 100%;
+  padding-top: 30px;
+}
+
+.discovery__wrapper.row {
+    display: flex;
+    align-items: flex-start; /* keine automatische Streckung */
+}
+
+/* Aufgabe 2*/
+#map {
+  height: 500px;
+}
+
+.discovery__map {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Aufgabe 2*/
+#map {
+  height: 500px;
+}
+
+
+  .discovery__map {
+    height: 500px;
+  }
+
+.discovery__results {
+<<<<<<< HEAD
+>>>>>>> 2a76a9b (Add geotagging.js and style.css to Aufgabe3)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
   gap: 20px
 }
 
@@ -270,9 +310,17 @@ button {
 @media (max-width: 1120px) {
 
   .discovery__wrapper.row {
+<<<<<<< HEAD
+<<<<<<< HEAD
     display: flex;
     flex-direction: column;
     align-items: stretch;
+=======
+    flex-direction: column;
+>>>>>>> 2a76a9b (Add geotagging.js and style.css to Aufgabe3)
+=======
+    flex-direction: column;
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
     gap: 30px;
   }
 
@@ -283,10 +331,16 @@ button {
   .discovery__map.col-8 {
     width: 100%;
   }
+<<<<<<< HEAD
+<<<<<<< HEAD
 
   .discovery__results {
     align-items: stretch;
   }
+=======
+>>>>>>> 2a76a9b (Add geotagging.js and style.css to Aufgabe3)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 }
 
 @media (max-width: 750px) {
@@ -294,25 +348,43 @@ button {
     flex-direction: column;
   }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
   .discovery__wrapper {
     flex-direction: column;
   }
 
+=======
+>>>>>>> 2a76a9b (Add geotagging.js and style.css to Aufgabe3)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
   .main__tagging.col-4,
   .main__discovery.col-8 {
     width: 100%;
   }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
   .discovery__results {
     flex-direction: column;
   }
 
+=======
+>>>>>>> 2a76a9b (Add geotagging.js and style.css to Aufgabe3)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
   .discovery__search input,
   .discovery__search button {
     width: 100%;
   }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
   #map {
     height: 500px;
   }
+=======
+>>>>>>> 2a76a9b (Add geotagging.js and style.css to Aufgabe3)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 }
