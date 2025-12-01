@@ -17,20 +17,8 @@ class GeoTag {
         this.hashtag = hashtag
     }
 
-<<<<<<< HEAD
     toString() {
         return `${this.name} (${this.latitude}, ${this.longitude}) ${this.hashtag}`;
-=======
-    // TODO: ... your code here ...
-    constructor(name, latitude, longitude, hashtag) {
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.hashtag = hashtag;
-<<<<<<< HEAD
->>>>>>> 2d5ca83 (add constructor to class GeoTag)
-=======
->>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
     }
 }
 

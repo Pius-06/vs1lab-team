@@ -1,20 +1,9 @@
-import LocationHelper from './location-helper.js';
 // File origin: VS1LAB A2 
 
 // eslint-disable-next-line no-unused-vars
 /**
-<<<<<<< HEAD
-<<<<<<< HEAD
 * A class to help using the Leaflet map service.
 */
-=======
- * A class to help using the Leaflet map service.
- */
->>>>>>> c819ee4 (MapManager and LocationHelper classes moved to separate scripts and the updateLocation function optimized)
-=======
- * A class to help using the Leaflet map service.
- */
->>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 class MapManager {
 
     #map
@@ -53,8 +42,6 @@ class MapManager {
             L.marker([tag.latitude, tag.longitude])
                 .bindPopup(tag.name)
                 .addTo(this.#markers);
-<<<<<<< HEAD
-<<<<<<< HEAD
         }
     }
 
@@ -125,66 +112,6 @@ class MapManager {
                 const tags = this.#getTagsFromDOM();
                 this.#renderMap(lat, lon, tags);
             });
-=======
->>>>>>> c819ee4 (MapManager and LocationHelper classes moved to separate scripts and the updateLocation function optimized)
-        }
-    }
-
-=======
-        }
-    }
-
->>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
-    /**
-    * TODO: 'updateLocation'
-    * A function to retrieve the current location and update the page.
-    * It is called once the page has been fully loaded.
-    */
-    updateLocation() {
-        const latitudeInput = document.querySelector('#latitude');
-        const longitudeInput = document.querySelector('#longitude');
-        if (!latitudeInput || !longitudeInput || latitudeInput.value === '' || longitudeInput.value === '') {
-            LocationHelper.findLocation(locationHelper => {
-                // Koordinaten bestimmen
-                const lat = locationHelper.latitude;
-                const lon = locationHelper.longitude;
-
-                const discoveryLatInput = document.querySelector('#latitudeHidden');
-                const discoveryLonInput = document.querySelector('#longitudeHidden');
-
-                // Koordinaten in Formulare eintragen
-                if (latitudeInput) {
-                    latitudeInput.value = lat;
-                }
-                if (longitudeInput) {
-                    longitudeInput.value = lon;
-                }
-                if (discoveryLatInput) {
-                    discoveryLatInput.value = lat;
-                }
-                if (discoveryLonInput) {
-                    discoveryLonInput.value = lon;
-                }
-
-                const mapDiv = document.getElementById('#map');      // <div id="map">
-                const tagsJson = mapElement?.getElementById('data-tags');  
-                tagsJson ? JSON.parse(tagsJson) : [];            // in JavaScript-Array umwandeln
-
-                this.initMap(lat, lon);
-                this.updateMarkers(lat, lon, tagsArray);
-
-                const imgElement = document.querySelector('#mapView');
-                if (imgElement) {
-                    imgElement.remove();
-                }
-
-                const descriptionParagraph = document.querySelector('span');
-                if (descriptionParagraph) {
-                    descriptionParagraph.remove();
-                }
-            });
         }
     }
 }
-
-export default MapManager; 

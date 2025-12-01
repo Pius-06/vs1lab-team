@@ -24,8 +24,6 @@
  * - Keyword matching should include partial matches from name or hashtag fields. 
  */
 class InMemoryGeoTagStore {
-<<<<<<< HEAD
-<<<<<<< HEAD
     #geoTags
 
     constructor() {
@@ -65,56 +63,8 @@ class InMemoryGeoTagStore {
 
     getAllGeoTags() {
         return [...this.#geoTags]
-=======
-=======
->>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
-
-    // TODO: ... your code here ...
-    #tags = [];
-    addGeoTag(tag) {
-        this.#tags.push(tag);
-<<<<<<< HEAD
->>>>>>> 3f14969 (implement these methods:)
-=======
->>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
     }
 
-    removeGeoTag(tagName) {
-        this.#tags = this.#tags.filter(tag => tag.name !== tagName);
-    }
-
-    // Latitude (Breitengrad): Gibt an, wie weit nördlich oder südlich man vom Äquator ist.
-    // Longitude (Längengrad): Gibt an, wie weit östlich oder westlich man vom Nullmeridian ist.
-    getNearbyGeoTags(latitude, longitude, distance) {
-        let nearbyTags = [];
-        this.#tags.forEach(tag => {
-            if (this.isTagNearbyLocation(latitude, longitude, distance, tag)) {
-                nearbyTags.push(tag);
-            }
-        });
-        return nearbyTags;
-    }
-
-    searchNearbyGeoTags(latitude, longitude, distance, searchTerm) {
-        let nearbyTags = this.getNearbyGeoTags(latitude, longitude, distance);
-        let nearbyTagsWithTerm = [];
-        nearbyTags.forEach(nearbyTag => {
-            if (nearbyTag.name.includes(searchTerm) || nearbyTag.hashtag.includes(searchTerm)) {
-                nearbyTagsWithTerm.push(nearbyTag);
-            }
-        });
-        return nearbyTagsWithTerm;
-    }
-
-    // Rechteck, kein Kreis!
-    isTagNearbyLocation(latitude, longitude, distance, tag) {
-        if ((tag.latitude < latitude + distance) && (tag.latitude > latitude - distance)) {
-            if ((tag.longitude < longitude + distance) && (tag.longitude > longitude - distance)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
 
 module.exports = InMemoryGeoTagStore
