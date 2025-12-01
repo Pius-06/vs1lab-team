@@ -1,28 +1,14 @@
 // File origin: VS1LAB A2 
 
+// eslint-disable-next-line no-unused-vars
 /**
- * from VS1LAB A3
- * 
- * A class to help using the Leaflet map service.
- */
- // eslint-disable-next-line no-unused-vars
- class MapManager {
+* A class to help using the Leaflet map service.
+*/
+class MapManager {
 
     #map
-    #defaultIcon
     #markers
-    constructor() {
-        // Default Icon of Leaflet can not be loaded in our environment, so it  was manually added to the repo
-        this.#defaultIcon = L.icon({
-           iconUrl: '/images/marker.svg',
-           shadowUrl: '/images/marker-shadow.svg',
-           iconSize: [25, 41],
-           iconAnchor: [12, 41],
-           popupAnchor: [1, -34],
-           shadowSize: [41, 41]
-        });
-    }
-    
+
     /**
     * Initialize a Leaflet map
     * @param {number} latitude The map center latitude
@@ -35,7 +21,8 @@
         var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer(
             'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; ' + mapLink + ' Contributors'}).addTo(this.#map);
+            attribution: '&copy; ' + mapLink + ' Contributors'
+        }).addTo(this.#map);
         this.#markers = L.layerGroup().addTo(this.#map);
     }
 
@@ -48,13 +35,83 @@
     updateMarkers(latitude, longitude, tags = []) {
         // delete all markers
         this.#markers.clearLayers();
-        L.marker([latitude, longitude], { icon: this.#defaultIcon })
+        L.marker([latitude, longitude])
             .bindPopup("Your Location")
             .addTo(this.#markers);
         for (const tag of tags) {
-            L.marker([tag.latitude,tag.longitude], { icon: this.#defaultIcon })
+            L.marker([tag.latitude, tag.longitude])
                 .bindPopup(tag.name)
-                .addTo(this.#markers);  
+                .addTo(this.#markers);
+        }
+    }
+
+
+    #removeMapPlaceholders() {
+        const imgElement = document.querySelector('#mapView');
+        if (imgElement) {
+            imgElement.remove();
+        }
+
+        const descriptionParagraph = document.querySelector('p');
+        if (descriptionParagraph) {
+            descriptionParagraph.remove();
+        }
+    }
+
+    #renderMap(lat, lon, tags) {
+        this.initMap(lat, lon);
+        this.updateMarkers(lat, lon, tags);
+        this.#removeMapPlaceholders();
+    }
+
+    #getTagsFromDOM() {
+        const mapElement = document.querySelector('#map');
+        const tags = mapElement?.getAttribute('data-tags');
+        return tags ? JSON.parse(tags) : [];
+    }
+
+    /**
+    * TODO: 'updateLocation'
+    * A function to retrieve the current location and update the page.
+    * It is called once the page has been fully loaded.
+    */
+    updateLocation() {
+        const latitudeInput = document.querySelector('#latitude');
+        const longitudeInput = document.querySelector('#longitude');
+
+        const latExists = latitudeInput?.value || '';
+        const lonExists = longitudeInput?.value || '';
+
+        // Wenn lat und lon existieren
+        if (latExists && lonExists) {
+            const lat = parseFloat(latExists);
+            const lon = parseFloat(lonExists);
+            const tags = this.#getTagsFromDOM()
+
+            this.#renderMap(lat, lon, tags);
+        } else {
+            LocationHelper.findLocation((locationHelper) => {
+                const lat = locationHelper.latitude;
+                const lon = locationHelper.longitude;
+                if (latitudeInput) {
+                    latitudeInput.value = lat;
+                }
+                if (longitudeInput) {
+                    longitudeInput.value = lon;
+                }
+
+                const hiddenLat = document.querySelector('#latitudeHidden');
+                const hiddenLon = document.querySelector('#longitudeHidden');
+                if (hiddenLat) {
+                    hiddenLat.value = lat;
+                }
+                if (hiddenLon) {
+                    hiddenLon.value = lon;
+                }
+
+                const tags = this.#getTagsFromDOM();
+                this.#renderMap(lat, lon, tags);
+            });
         }
     }
 }

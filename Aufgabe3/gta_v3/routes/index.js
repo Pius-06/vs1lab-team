@@ -31,6 +31,14 @@ const GeoTag = require('../models/geotag');
 // eslint-disable-next-line no-unused-vars
 const GeoTagStore = require('../models/geotag-store');
 
+const GeoTagExamples = require('../models/geotag-examples');
+
+const geoTagStore = new GeoTagStore();
+GeoTagExamples.tagList.forEach(([name, latitude, longitude, hashtag]) => {
+  geoTagStore.addGeoTag(new GeoTag(name, latitude, longitude, hashtag));
+});
+
+
 /**
  * Route '/' for HTTP 'GET' requests.
  * (http://expressjs.com/de/4x/api.html#app.get.method)
@@ -42,9 +50,12 @@ const GeoTagStore = require('../models/geotag-store');
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { taglist: [] })
+  res.render('index', {
+    taglist: geoTagStore.getAllGeoTags(),
+    latitude: '',
+    longitude: ''
+  });
 });
-
 /**
  * Route '/tagging' for HTTP 'POST' requests.
  * (http://expressjs.com/de/4x/api.html#app.post.method)
@@ -61,6 +72,23 @@ router.get('/', (req, res) => {
  */
 
 // TODO: ... your code here ...
+router.post("/tagging", (req, res) => {
+  const { latitude, longitude, name, hashtag } = req.body;
+  const newTag = new GeoTag(name, latitude, longitude, hashtag);
+  geoTagStore.addGeoTag(newTag);
+
+  const nearbyTags = geoTagStore.getNearbyGeoTags(
+    parseFloat(latitude),
+    parseFloat(longitude),
+    10
+  );
+
+  res.render('index', {
+    taglist: nearbyTags,
+    latitude,
+    longitude
+  });
+});
 
 /**
  * Route '/discovery' for HTTP 'POST' requests.
@@ -79,5 +107,30 @@ router.get('/', (req, res) => {
  */
 
 // TODO: ... your code here ...
+router.post('/discovery', (req, res) => {
+  const { latitudeHidden, longitudeHidden, searchTerm } = req.body;
+
+  let results;
+  if (searchTerm) {
+    results = geoTagStore.searchNearbyGeoTags(
+      parseFloat(latitudeHidden),
+      parseFloat(longitudeHidden),
+      10,
+      searchTerm
+    );
+  } else {
+    results = geoTagStore.getNearbyGeoTags(
+      parseFloat(latitudeHidden),
+      parseFloat(longitudeHidden),
+      10
+    );
+  }
+
+  res.render('index', {
+    taglist: results,
+    latitude: latitudeHidden,
+    longitude: longitudeHidden
+  });
+});
 
 module.exports = router;
