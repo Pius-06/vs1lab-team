@@ -71,7 +71,7 @@
                     <legend>Search</legend>
 
                     <label for="searchTerm">Search term of keywords:</label>
-                    <input id="searchTerm" name="searchTerm" type="text" pattern="[A-Za-zÄÖÜäöüß]{1,10}"
+                    <input id="searchTerm" name="searchTerm" type="text" pattern="[A-Za-zÄÖÜäöüß]+" minlength="1" maxlength="10"
                         placeholder="e.g. Berlin">
                     <button class="searchButton" type="submit">Search</button>
 
