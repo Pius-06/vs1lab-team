@@ -14,6 +14,7 @@ console.log("The geoTagging script is going to start...");
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
 =======
@@ -176,6 +177,10 @@ document.addEventListener("DOMContentLoaded", () => {
 >>>>>>> 2a76a9b (Add geotagging.js and style.css to Aufgabe3)
 =======
 >>>>>>> dd08d1e (delete unused line)
+=======
+// Wait for the page to fully load its DOM content, then call updateLocation
+document.addEventListener("DOMContentLoaded", () => {
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
     const mapManager = new MapManager();
     mapManager.updateLocation();
 });

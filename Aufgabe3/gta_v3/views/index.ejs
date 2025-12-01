@@ -2,12 +2,18 @@
 <!DOCTYPE html>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 
 
 <!DOCTYPE html>
 
+<<<<<<< HEAD
 >>>>>>> 89453ad (add html-document to ejs-template)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 <!-- File origin: VS1LAB A1a -->
 
 <html lang="en">
@@ -15,13 +21,18 @@
 <head>
     <!-- Leaflet CSS and JavaScript (in this order) -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 >>>>>>> 89453ad (add html-document to ejs-template)
+=======
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
     <link rel='stylesheet' href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <script src="./javascripts/location-helper.js"></script>
     <script src="./javascripts/map-manager.js"></script>
@@ -29,6 +40,8 @@
 
 =======
 >>>>>>> 89453ad (add html-document to ejs-template)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoTagApp</title>
@@ -56,6 +69,7 @@
 
                     <label for="latitude">Latitude:</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <input id="latitude" name="latitude" type="text" placeholder="49.01379" value="<%=latitude || ''%>"
                         readonly>
 
@@ -63,11 +77,16 @@
                     <input id="longitude" name="longitude" type="text" placeholder="8.390071"
                         value="<%=longitude || '' %>" readonly>
 =======
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
                     <input id="latitude" name="latitude" type="text" placeholder="49.01379" readonly>
 
                     <label for="longitude">Longitude:</label>
                     <input id="longitude" name="longitude" type="text" placeholder="8.390071" readonly>
+<<<<<<< HEAD
 >>>>>>> 89453ad (add html-document to ejs-template)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 
                     <label for="name">Name:</label>
                     <input id="name" name="name" type="text" placeholder="e.g. Central Berlin" maxlength="10" required>
@@ -91,6 +110,7 @@
                 <fieldset>
                     <legend>Search</legend>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                     <label for="searchTerm">Search term of keywords:</label>
                     <input id="searchTerm" name="searchTerm" type="text" pattern="[A-Za-zÄÖÜäöüß]{1,10}"
@@ -102,6 +122,8 @@
                         hidden>
 
 =======
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
                     <label for="searchTerm">Search term of keywords:</label>
                     <input id="searchTerm" type="text" required pattern="[A-Za-zÄÖÜäöüß(1-9)]+" minlength="1" maxlength="10"
                         placeholder="e.g. Berlin">
@@ -109,7 +131,10 @@
 
                     <input id="latitudeHidden" name="latitudeHidden" type="text" hidden>
                     <input id="longitudeHidden" name="longitudeHidden" type="text" hidden>
+<<<<<<< HEAD
 >>>>>>> 89453ad (add html-document to ejs-template)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
                 </fieldset>
 
             </form>
@@ -124,10 +149,14 @@
                             </li>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
                             <% }); %>
                     </ul>
                 </div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <div id="map" class="discovery__map col-8" data-tags='<%- JSON.stringify(taglist || [])%>'>
 =======
@@ -143,6 +172,9 @@
 =======
                 <div id="map" class="discovery__map col-8" data-tags='<%= JSON.stringify(taglist) %>'>
 >>>>>>> b6d926b (add data-* attribute in #map-element)
+=======
+                <div id="map" class="discovery__map col-8" data-tags='<%= JSON.stringify(taglist) %>'>
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
                     <img src="./images/mapview.jpg" alt="a map with locations" id="mapView" />
                     <span>Result map</span>
                 </div>

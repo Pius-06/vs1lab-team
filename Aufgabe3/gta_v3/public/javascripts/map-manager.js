@@ -4,12 +4,17 @@ import LocationHelper from './location-helper.js';
 // eslint-disable-next-line no-unused-vars
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 * A class to help using the Leaflet map service.
 */
 =======
  * A class to help using the Leaflet map service.
  */
 >>>>>>> c819ee4 (MapManager and LocationHelper classes moved to separate scripts and the updateLocation function optimized)
+=======
+ * A class to help using the Leaflet map service.
+ */
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 class MapManager {
 
     #map
@@ -48,6 +53,7 @@ class MapManager {
             L.marker([tag.latitude, tag.longitude])
                 .bindPopup(tag.name)
                 .addTo(this.#markers);
+<<<<<<< HEAD
 <<<<<<< HEAD
         }
     }
@@ -124,6 +130,11 @@ class MapManager {
         }
     }
 
+=======
+        }
+    }
+
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
     /**
     * TODO: 'updateLocation'
     * A function to retrieve the current location and update the page.

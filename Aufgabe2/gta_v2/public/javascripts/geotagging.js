@@ -119,21 +119,22 @@ class MapManager {
     updateLocation() {
         // Teil 1
         LocationHelper.findLocation((locationHelper) => {
+            // Koordinaten bestimmen
             const lat = locationHelper.latitude;
             const lon = locationHelper.longitude;
 
             const latitudeInput = document.querySelector('#latitude');
             const longitudeInput = document.querySelector('#longitude');
+            const discoveryLatInput = document.querySelector('#latitudeHidden');
+            const discoveryLonInput = document.querySelector('#longitudeHidden');
 
+            // Koordinaten in Formulare eintragen
             if (latitudeInput) {
                 latitudeInput.value = lat;
             }
             if (longitudeInput) {
                 longitudeInput.value = lon;
             }
-            const discoveryLatInput = document.querySelector('#latitudeHidden');
-            const discoveryLonInput = document.querySelector('#longitudeHidden');
-
             if (discoveryLatInput) {
                 discoveryLatInput.value = lat;
             }
@@ -149,7 +150,7 @@ class MapManager {
                 imgElement.remove();
             }
 
-            const descriptionParagraph = document.querySelector('p');
+            const descriptionParagraph = document.querySelector('span');
             if (descriptionParagraph) {
                 descriptionParagraph.remove();
             }

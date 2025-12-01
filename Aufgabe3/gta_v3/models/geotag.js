@@ -27,7 +27,10 @@ class GeoTag {
         this.latitude = latitude;
         this.longitude = longitude;
         this.hashtag = hashtag;
+<<<<<<< HEAD
 >>>>>>> 2d5ca83 (add constructor to class GeoTag)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
     }
 }
 

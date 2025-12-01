@@ -230,6 +230,8 @@ button {
 }
 
 .discovery__wrapper {
+  display: flex;
+  width: 100%;
   padding-top: 30px;
 }
 
@@ -248,9 +250,17 @@ button {
   flex-direction: column;
 }
 
+/* Aufgabe 2*/
+#map {
+  height: 500px;
+}
+
+
+  .discovery__map {
+    height: 500px;
+  }
+
 .discovery__results {
-  display: flex;
-  flex-direction: column;
   gap: 20px
 }
 

@@ -2,6 +2,7 @@
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * A class to help using the HTML5 Geolocation API.
  */
 // eslint-disable-next-line no-unused-vars
@@ -10,6 +11,10 @@
   * A class to help using the HTML5 Geolocation API.
   */
 >>>>>>> c819ee4 (MapManager and LocationHelper classes moved to separate scripts and the updateLocation function optimized)
+=======
+  * A class to help using the HTML5 Geolocation API.
+  */
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 class LocationHelper {
     // Location values for latitude and longitude are private properties to protect them from changes.
     #latitude = '';
@@ -65,8 +70,13 @@ class LocationHelper {
     }
 <<<<<<< HEAD
 }
+<<<<<<< HEAD
 =======
 }
 
 export default LocationHelper;
 >>>>>>> c819ee4 (MapManager and LocationHelper classes moved to separate scripts and the updateLocation function optimized)
+=======
+
+export default LocationHelper;
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e

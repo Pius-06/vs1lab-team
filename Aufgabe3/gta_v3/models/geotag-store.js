@@ -25,6 +25,7 @@
  */
 class InMemoryGeoTagStore {
 <<<<<<< HEAD
+<<<<<<< HEAD
     #geoTags
 
     constructor() {
@@ -65,12 +66,17 @@ class InMemoryGeoTagStore {
     getAllGeoTags() {
         return [...this.#geoTags]
 =======
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
 
     // TODO: ... your code here ...
     #tags = [];
     addGeoTag(tag) {
         this.#tags.push(tag);
+<<<<<<< HEAD
 >>>>>>> 3f14969 (implement these methods:)
+=======
+>>>>>>> d95633b35e2b363778777ed8fd1e510977a4dd3e
     }
 
     removeGeoTag(tagName) {
