@@ -26,6 +26,13 @@ const GeoTag = require('../models/geotag');
  */
 // eslint-disable-next-line no-unused-vars
 const GeoTagStore = require('../models/geotag-store');
+const GeoTagExamples = require('../models/geotag-examples');
+
+// Examples hinzufügen
+const geoTagStore = new GeoTagStore();
+GeoTagExamples.tagList.forEach(([name, latitude, longitude, hashtag]) => {
+  geoTagStore.addGeoTag(new GeoTag(name, latitude, longitude, hashtag));
+});
 
 // App routes (A3)
 
@@ -38,8 +45,12 @@ const GeoTagStore = require('../models/geotag-store');
  * As response, the ejs-template is rendered without geotag objects.
  */
 
-router.get('/', (req, res) => {
-  res.render('index', { taglist: [] })
+router.get('/', (req, res) => { // get-request auf Startseite
+  res.render('index', { // render: Rendere die EJS-Template-Datei index.ejs und schicke sie als HTML zurück
+    taglist: geoTagStore.getAllGeoTags(),
+    latitude: '',
+    longitude: ''
+  });
 });
 
 // API routes (A4)
