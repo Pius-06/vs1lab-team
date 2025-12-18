@@ -33,6 +33,7 @@ const GeoTagStore = require('../models/geotag-store');
 
 const GeoTagExamples = require('../models/geotag-examples');
 
+// Examples hinzufügen
 const geoTagStore = new GeoTagStore();
 GeoTagExamples.tagList.forEach(([name, latitude, longitude, hashtag]) => {
   geoTagStore.addGeoTag(new GeoTag(name, latitude, longitude, hashtag));
@@ -49,8 +50,8 @@ GeoTagExamples.tagList.forEach(([name, latitude, longitude, hashtag]) => {
  */
 
 // TODO: extend the following route example if necessary
-router.get('/', (req, res) => {
-  res.render('index', {
+router.get('/', (req, res) => { // get-request auf Startseite
+  res.render('index', { // render: Rendere die EJS-Template-Datei index.ejs und schicke sie als HTML zurück
     taglist: geoTagStore.getAllGeoTags(),
     latitude: '',
     longitude: ''
@@ -107,7 +108,7 @@ router.post("/tagging", (req, res) => {
  */
 
 // TODO: ... your code here ...
-router.post('/discovery', (req, res) => {
+router.post('/discovery', (req, res) => { // Suchanfrrage
   const { latitudeHidden, longitudeHidden, searchTerm } = req.body;
 
   let results;

@@ -52,7 +52,7 @@ class MapManager {
             imgElement.remove();
         }
 
-        const descriptionParagraph = document.querySelector('p');
+        const descriptionParagraph = document.querySelector('span');
         if (descriptionParagraph) {
             descriptionParagraph.remove();
         }

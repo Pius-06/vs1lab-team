@@ -87,8 +87,10 @@
             <div class="discovery__wrapper row">
                 <div class="discovery__taglist col-4">
                     <ul class="discovery__results" id="discoveryResults">
+                        <!-- < % ... %> Alles innerhalb dieser Tags ist reines JavaScript, wird ausgeführt, aber nicht ins HTML geschrieben.-->
                         <% if (taglist !==undefined) taglist.forEach(function(gtag) { %>
                             <li>
+                                <!-- Alles innerhalb von < %= %> wird evaluated und in HTML eingefügt.-->
                                 <%= gtag.name %> ( <%= gtag.latitude %>,<%= gtag.longitude %>) <%= gtag.hashtag %>
                             </li>
                             <% }); %>

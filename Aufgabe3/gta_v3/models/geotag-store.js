@@ -35,14 +35,15 @@ class InMemoryGeoTagStore {
     }
 
     removeGeoTag(name) {
-        this.#geoTags = this.#geoTags.filter(geoTag => geoTag.name !== name)
+        // filter erstellt ein neues Array aus #geoTags, das nur die Elemente enthält, für die die Bedingung geoTag.name !== name wahr ist.
+        this.#geoTags = this.#geoTags.filter(geoTag => geoTag.name !== name) 
     }
 
     getNearbyGeoTags(latitude, longitude, radius = 10) {
         return this.#geoTags.filter(tag => {
             const dLat = tag.latitude - latitude
             const dLon = tag.longitude - longitude
-            const distance = Math.sqrt(dLat * dLat + dLon * dLon)   // c calculation by Pytaghoras
+            const distance = Math.sqrt(dLat * dLat + dLon * dLon)   // a^2+b^2=c^2 
             return distance <= radius
         });
     }
@@ -62,6 +63,8 @@ class InMemoryGeoTagStore {
     }
 
     getAllGeoTags() {
+        // ... Er erstellt eine Kopie des Arrays #geoTags.
+        // Vorteil: Wer die zurückgegebene Liste verändert (z. B. Elemente löscht oder hinzufügt), ändert nicht das private Array #geoTags direkt.
         return [...this.#geoTags]
     }
 
