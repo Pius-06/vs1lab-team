@@ -1,0 +1,54 @@
+### 1. ERSTELLEN 
+POST http://localhost:3000/api/geotags
+Content-Type: application/json
+
+{
+  "name": "KIT Campus Süd",
+  "latitude": 49.0093797,
+  "longitude": 8.418333,
+  "hashtag": "kit"
+}
+
+
+### 2. AUSLESEN
+GET http://localhost:3000/api/geotags/1
+
+
+### 3. ALLE AUSLESEN
+GET http://localhost:3000/api/geotags
+
+
+### 4. SUCHEN NACH SEARCHTERM
+GET http://localhost:3000/api/geotags?searchterm=kit
+
+
+### 5. SUCHEN IM RADIUS
+GET http://localhost:3000/api/geotags?latitude=49.0069&longitude=8.4037&radius=10
+
+
+### 6. SUCHEN IM RADIUS UND NACH SEARCHTERM
+GET http://localhost:3000/api/geotags?latitude=48&longitude=6&radius=100&searchterm=kit
+
+
+### 7. ÄNDERN
+PUT http://localhost:3000/api/geotags/1
+Content-Type: application/json
+
+{
+  "name": "KIT Campus Süd - Hauptgebäude",
+  "latitude": 49.0093797,
+  "longitude": 8.418333,
+  "hashtag": "kit-sued"
+}
+
+
+### 8. AUSLESEN NACH UPDATE
+GET http://localhost:3000/api/geotags/1
+
+
+### 9. LÖSCHEN
+DELETE http://localhost:3000/api/geotags/1
+
+
+### 10. AUSLESEN NACH LÖSCHEN
+GET http://localhost:3000/api/geotags/1
