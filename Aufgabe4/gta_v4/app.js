@@ -20,7 +20,6 @@ const indexRouter = require('./routes/index');
 /**
  * Set up Express app.
  */
-
 const app = express();
 
 // Set ejs as the view engine.

@@ -31,7 +31,13 @@ const GeoTagExamples = require('../models/geotag-examples');
 // Examples hinzufügen
 const geoTagStore = new GeoTagStore();
 GeoTagExamples.tagList.forEach(([name, latitude, longitude, hashtag]) => {
-  geoTagStore.addGeoTag(new GeoTag(name, latitude, longitude, hashtag));
+  geoTagStore.addGeoTag(
+    new GeoTag({
+      name,
+      latitude,
+      longitude,
+      hashtag
+    }));
 });
 
 // App routes (A3)
@@ -45,7 +51,7 @@ GeoTagExamples.tagList.forEach(([name, latitude, longitude, hashtag]) => {
  * As response, the ejs-template is rendered without geotag objects.
  */
 
-router.get('/', (req, res) => { // get-request auf Startseite
+router.get('/', (req, res) => { 
   res.render('index', { // render: Rendere die EJS-Template-Datei index.ejs und schicke sie als HTML zurück
     taglist: geoTagStore.getAllGeoTags(),
     latitude: '',
@@ -68,6 +74,30 @@ router.get('/', (req, res) => { // get-request auf Startseite
  */
 
 // TODO: ... your code here ...
+router.get('/api/geotags', (req, res) => {
+  const { latitude, longitude, searchTerm, page = 1, pageSize = 10 } = req.query;
+
+  const allGeoTags = geoTagStore.searchNearbyGeoTags({
+    latitude: latitude ? parseFloat(latitude) : undefined,
+    longitude: longitude ? parseFloat(longitude) : undefined,
+    radius: 10,
+    keyword: searchTerm
+  });
+
+  const totalEntries = allGeoTags.length;
+  const countPages = Math.ceil(totalEntries / pageSize);
+  const currentPage = Math.max(1, Math.min(page, countPages));
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const pagedGeoTags = allGeoTags.slice(startIndex, startIndex + parseInt(pageSize));
+
+  res.status(200).json({
+    geotags: pagedGeoTags,
+    currentPage,
+    countPages,
+    totalEntries
+  });
+});
 
 
 /**
@@ -82,6 +112,28 @@ router.get('/', (req, res) => { // get-request auf Startseite
  */
 
 // TODO: ... your code here ...
+router.post('/api/geotags', (req, res) => {
+  const { latitude, longitude, name, hashtag } = req.body;
+
+  if (!latitude || !longitude || !name) {
+    return res
+      .status(400)
+      .json({ error: 'Missing required fields' });
+  }
+  const newTag = new GeoTag({
+    name,
+    latitude: parseFloat(latitude),
+    longitude: parseFloat(longitude),
+    hashtag
+  });
+  geoTagStore.addGeoTag(newTag);
+
+  res
+    .status(201)
+    .location(`/api/geotags/${newTag.id}`)
+    .json(newTag);
+});
+
 
 
 /**
@@ -95,7 +147,20 @@ router.get('/', (req, res) => { // get-request auf Startseite
  */
 
 // TODO: ... your code here ...
+router.get('/api/geotags/:id', async (req, res) => {
+  const id = Number(req.params.id);
+  const tag = geoTagStore.getGeoTagById(id);
 
+  if (!tag) {
+    return res
+      .status(404)
+      .json({ error: `GeoTag with id ${id} not found` });
+  }
+
+  res
+    .status(200)
+    .json(tag);
+});
 
 /**
  * Route '/api/geotags/:id' for HTTP 'PUT' requests.
@@ -112,7 +177,20 @@ router.get('/', (req, res) => { // get-request auf Startseite
  */
 
 // TODO: ... your code here ...
+router.put('/api/geotags/:id', async (req, res) => {
+  const id = Number(req.params.id);
+  const updatedTag = geoTagStore.updateGeoTagById(id, req.body);
 
+  if (!updatedTag) {
+    return res
+      .status(404)
+      .json({ error: `GeoTag with id ${id} not found` });
+  }
+
+  res
+    .status(200)
+    .json(updatedTag);
+});
 
 /**
  * Route '/api/geotags/:id' for HTTP 'DELETE' requests.
@@ -126,5 +204,18 @@ router.get('/', (req, res) => { // get-request auf Startseite
  */
 
 // TODO: ... your code here ...
+router.delete('/api/geotags/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  const deletedTag = geoTagStore.deleteElementById(id);
+  if (!deletedTag) {
+    return res
+      .status(404)
+      .json({ error: `GeoTag with id ${id} not found` });
+  }
+
+  res
+    .status(200)
+    .json(deletedTag);
+});
 
 module.exports = router;

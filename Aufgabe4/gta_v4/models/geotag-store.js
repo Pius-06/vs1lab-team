@@ -25,47 +25,94 @@
  */
 class InMemoryGeoTagStore {
     #geoTags
+    #nextId = 1;
 
     constructor() {
         this.#geoTags = []
     }
 
     addGeoTag(geoTag) {
-        this.#geoTags.push(geoTag)
+        if (!geoTag.latitude || !geoTag.longitude || !geoTag.name) {
+            return null;
+        }
+        geoTag.id = this.#nextId++;
+        this.#geoTags.push(geoTag);
+        return geoTag;
     }
 
     removeGeoTag(name) {
-        // filter erstellt ein neues Array aus #geoTags, das nur die Elemente enthält, für die die Bedingung geoTag.name !== name wahr ist.
-        this.#geoTags = this.#geoTags.filter(geoTag => geoTag.name !== name) 
+        this.#geoTags = this.#geoTags.filter(geoTag => geoTag.name !== name)
     }
 
     getNearbyGeoTags(latitude, longitude, radius = 10) {
         return this.#geoTags.filter(tag => {
-            const dLat = tag.latitude - latitude
-            const dLon = tag.longitude - longitude
-            const distance = Math.sqrt(dLat * dLat + dLon * dLon)   // a^2+b^2=c^2 
+            const distance = this.#distance(tag.latitude, latitude, tag.longitude, longitude)
             return distance <= radius
         });
     }
 
-    searchNearbyGeoTags(latitude, longitude, radius = 10, keyword) {
+    searchNearbyGeoTags({ latitude, longitude, radius = 1, keyword } = {}) {
         return this.#geoTags.filter(tag => {
-            const dLat = tag.latitude - latitude
-            const dLon = tag.longitude - longitude
-            const inRadius = Math.sqrt(dLat * dLat + dLon * dLon) <= radius
 
-            const matchesKeyword =
-                tag.name.toLowerCase().includes(keyword.toLowerCase()) ||
-                tag.hashtag.toLowerCase().includes(keyword.toLowerCase())
+            if (latitude !== undefined && longitude !== undefined) {
+                const distance = this.#distance(tag.latitude, tag.longitude, latitude, longitude);
+                if (distance > radius) {
+                    return false;
+                }
+            }
 
-            return inRadius && matchesKeyword
+            return this.#matchesKeyword(tag, keyword);
         });
     }
 
+    #distance(lat1, lon1, lat2, lon2) {
+        const dLat = lat1 - lat2;
+        const dLon = lon1 - lon2;
+        return Math.sqrt(dLat * dLat + dLon * dLon) // a^2+b^2=c^2 
+    }
+
+    #matchesKeyword(tag, keyword) {
+        if (!keyword) return true;
+
+        const k = keyword.toLowerCase();
+        return (
+            tag.name.toLowerCase().includes(k) || tag.hashtag.toLowerCase().includes(k)
+        );
+    }
+
     getAllGeoTags() {
-        // ... Er erstellt eine Kopie des Arrays #geoTags.
-        // Vorteil: Wer die zurückgegebene Liste verändert (z. B. Elemente löscht oder hinzufügt), ändert nicht das private Array #geoTags direkt.
         return [...this.#geoTags]
+    }
+
+    getGeoTagById(id) {
+        const tag = this.#geoTags.find(tag => tag.id === id);
+        return tag;
+    }
+
+    updateGeoTagById(id, { name, latitude, longitude, hashtag } = {}) {
+        const tag = this.#geoTags.find(tag => tag.id === id);
+
+        if (!tag) {
+            return null;
+        }
+
+        if (name !== undefined) tag.name = name;
+        if (latitude !== undefined) tag.latitude = latitude;
+        if (longitude !== undefined) tag.longitude = longitude;
+        if (hashtag !== undefined) tag.hashtag = hashtag;
+
+        return tag;
+    }
+
+    deleteElementById(id) {
+        const index = this.#geoTags.findIndex(tag => tag.id == id);
+        if (index > -1) {
+            const tag = this.#geoTags[index];
+            this.#geoTags.splice(index, 1);
+            return tag
+        } else {
+            return null;
+        }
     }
 
 }
