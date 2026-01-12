@@ -1,0 +1,32 @@
+### 1) GeoTag erstellen (POST)
+POST http://localhost:3000/api/geotags
+Content-Type: application/json
+
+{
+  "name": "Park",
+  "latitude": 49.012,
+  "longitude": 8.404,
+  "hashtag": "#nature"
+}
+
+### Alle GeoTags abrufen 
+GET http://localhost:3000/api/geotags
+
+### Einzelnes GeoTag abrufen 
+GET http://localhost:3000/api/geotags/1
+
+### GeoTag aktualisieren 
+PUT http://localhost:3000/api/geotags/1
+Content-Type: application/json
+
+{
+  "name": "Stadtpark",
+  "hashtag": "#citynature"
+}
+
+### GeoTag mit Keyword und Koordinaten suchen
+GET http://localhost:3000/api/geotags?searchTerm=Stadtpark&latitude=49.012&longitude=8.404
+
+### GeoTag löschen (DELETE)
+DELETE http://localhost:3000/api/geotags/1
+
