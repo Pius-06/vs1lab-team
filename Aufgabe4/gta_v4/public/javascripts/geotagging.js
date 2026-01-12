@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (discoveryForm) {
         discoveryForm.addEventListener('submit', handleDiscoveryFormSubmit);
     }
-
 });
 
 

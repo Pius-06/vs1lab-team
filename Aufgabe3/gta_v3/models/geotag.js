@@ -16,10 +16,6 @@ class GeoTag {
         this.name = name
         this.hashtag = hashtag
     }
-
-    toString() {
-        return `${this.name} (${this.latitude}, ${this.longitude}) ${this.hashtag}`;
-    }
 }
 
 module.exports = GeoTag;

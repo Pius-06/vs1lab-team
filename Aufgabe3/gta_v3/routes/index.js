@@ -115,14 +115,14 @@ router.post('/discovery', (req, res) => {
     results = geoTagStore.searchNearbyGeoTags(
       parseFloat(latitudeHidden),
       parseFloat(longitudeHidden),
-      10,
+      0.00000001,
       searchTerm
     );
   } else {
     results = geoTagStore.getNearbyGeoTags(
       parseFloat(latitudeHidden),
       parseFloat(longitudeHidden),
-      10
+      0.00000001,
     );
   }
 

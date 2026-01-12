@@ -61,6 +61,8 @@ class InMemoryGeoTagStore {
         });
     }
 
+// calculate DISRTANCE
+
     getAllGeoTags() {
         return [...this.#geoTags]
     }
