@@ -85,11 +85,11 @@ router.get('/api/geotags', (req, res) => {
   });
 
   const totalEntries = allGeoTags.length;
-  const countPages = Math.ceil(totalEntries / pageSize);
+  const countPages = Math.ceil(totalEntries / pageSize); // rundet auf
   const currentPage = Math.max(1, Math.min(page, countPages));
 
   const startIndex = (currentPage - 1) * pageSize;
-  const pagedGeoTags = allGeoTags.slice(startIndex, startIndex + parseInt(pageSize));
+  const pagedGeoTags = allGeoTags.slice(startIndex, startIndex + pageSize); // liefert nur die Geotags für eine Seite
 
   res.status(200).json({
     geotags: pagedGeoTags,

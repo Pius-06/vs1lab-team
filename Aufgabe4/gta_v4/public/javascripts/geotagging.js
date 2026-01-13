@@ -58,7 +58,6 @@ async function handleCreateGeoTag(event) {
         const newTag = await response.json();
         console.log('Neuer GeoTag erstellt:', newTag);
 
-        // Discovery-Liste aktualisieren
         await updateDiscoveryWidget();
 
         event.target.reset(); // Formular zurücksetzen
@@ -81,6 +80,7 @@ async function handleSearchGeoTag(event) {
 
     const response = await fetch('/api/geotags?' + params.toString());
     const geotags = await response.json();
+    console.log(geotags);
     await updateDiscoveryWidget(
         searchTerm,
         latitude,
@@ -93,9 +93,11 @@ async function updateDiscoveryWidget(searchTerm = '', latitude, longitude, page 
     currentPage = page;
 
     const params = new URLSearchParams();
+
     if (searchTerm) params.append('searchTerm', searchTerm);
     if (latitude) params.append('latitude', latitude);
     if (longitude) params.append('longitude', longitude);
+
     params.append('page', currentPage);
     params.append('pageSize', pageSize);
 
